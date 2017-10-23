@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<data>
+
+    <import type="android.view.View" />
+
+    <variable
+        name="view"
+        type="tip.edu.ph.runrio.ui.upcoming_race.detail.UpcomingRaceDetailView" />
+
+    <variable
+        name="rate"
+        type="tip.edu.ph.runrio.model.data.ClaimingType" />
+
+    <variable
+        name="contentVisible"
+        type="boolean" />
+
+</data>
+
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:padding="2dp"
+            android:text="@{rate.claimingTypeName}"
+            android:textColor="@color/lightGray" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:padding="2dp"
+            android:id="@+id/claimingUpcomingDetailAddress"
+            android:textColor="@color/lightGray" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:visibility="gone"
+           android:weightSum="1">
+           <TextView
+               android:layout_width="0dp"
+               android:layout_weight=".5"
+               android:layout_height="wrap_content"
+               android:gravity="bottom"
+               android:padding="2dp"
+               android:id="@+id/claimingUpcomingDetaildesc1"
+               android:textColor="@color/lightGray" />
+           <TextView
+               android:layout_width="0dp"
+               android:layout_weight=".5"
+               android:layout_height="wrap_content"
+               android:id="@+id/claimingUpcomingDetaildesc2"
+               android:gravity="bottom"
+               android:padding="2dp"
+               android:textColor="@color/lightGray" />
+
+       </LinearLayout>
+   </LinearLayout>
+
+
+</layout>

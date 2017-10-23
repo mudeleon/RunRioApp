@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="tip.edu.ph.runrio.util.DateTimeUtils" />
+
+        <variable
+            name="race"
+            type="tip.edu.ph.runrio.model.data.UpcomingRaces" />
+
+        <variable
+            name="view"
+            type="tip.edu.ph.runrio.ui.upcoming_race.transaction.racetype.RaceTypeTransactionView" />
+    </data>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="STEP 1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="How many runners?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:weightSum="100">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:background="@drawable/button_box_accent"
+                    android:gravity="center"
+                    android:onClick="@{() -> view.switchView(false)}"
+                    android:padding="6dp"
+                    android:text="ONE" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:background="@drawable/button_box_accent"
+                    android:gravity="center"
+                    android:onClick="@{() -> view.switchView(true)}"
+                    android:padding="6dp"
+                    android:text="MANY" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:id="@+id/runnerOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
+                    android:gravity="center|top"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="visible">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/runnerMany"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
+                    android:gravity="center|top"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="0dp"
+                    android:layout_weight=".1"
+                    android:layout_gravity="bottom|end"
+                    android:background="@drawable/button_rounded_slight_accent"
+                    android:gravity="center"
+                    android:onClick="@{() -> view.clickNext()}"
+                    android:padding="10dp"
+                    android:text="Next"
+                    android:visibility="invisible"
+                    android:id="@+id/runnerManyNext"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight=".1"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="5dp"
+                    android:gravity="bottom"
+                    android:text='@{race.racesName+"\n"+race.raceVenue}'
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

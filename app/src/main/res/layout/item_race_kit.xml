@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<data>
+
+    <import type="android.view.View" />
+
+    <variable
+        name="view"
+        type="tip.edu.ph.runrio.ui.upcoming_race.detail.UpcomingRaceDetailView" />
+
+    <variable
+        name="race"
+        type="tip.edu.ph.runrio.model.data.RaceKit"/>
+
+    <variable
+        name="contentVisible"
+        type="boolean" />
+
+</data>
+
+<android.support.v7.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="120dp"
+    android:layout_height="100dp"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="2dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/upcomingRacesDetailRaceKitImage"
+            android:background="@color/lightestGray"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#98000000"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:padding="10dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{race.raceKitName}"
+            android:textColor="@color/white" />
+    </FrameLayout>
+</android.support.v7.widget.CardView>
+
+</layout>

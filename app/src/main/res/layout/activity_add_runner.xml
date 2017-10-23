@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="tip.edu.ph.runrio.util.DateTimeUtils" />
+
+        <variable
+            name="activity"
+            type="tip.edu.ph.runrio.ui.profile.edit.EditProfileActivity" />
+
+        <variable
+            name="user"
+            type="tip.edu.ph.runrio.model.data.User" />
+    </data>
+
+    <android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width    ="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.pocholomia.paynamics.ui.profile.edit.EditProfileActivity">
+
+        <LinearLayout
+            android:id="@+id/activity_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="480dp"
+                    android:scaleType="centerCrop"
+                    android:background="#3F51B5"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="480dp"
+                    android:scaleType="centerCrop"
+                    android:background="@color/colorPrimary"
+                    tools:ignore="ContentDescription" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_vertical_margin">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="112dp"
+                        android:layout_height="112dp"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/nav_header_vertical_spacing"
+                        tools:ignore="ContentDescription" />
+
+                    <Button
+                        android:id="@+id/btn_change_image"
+                        style="@style/Base.Widget.AppCompat.Button.Borderless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:onClick="@{() -> activity.onChangeUserImage()}"
+                        android:text="Select Profile Photo"
+                        android:textColor="@android:color/white" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit_text_reg"
+                    android:hint="First Name"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    android:text="@{user.firstName}"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/et_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit_text_reg"
+                    android:hint="Last Name"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    android:text="@{user.lastName}"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <!--<EditText-->
+                    <!--android:id="@+id/et_email"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:background="@drawable/bg_edit_text_reg"-->
+                    <!--android:hint="Email"-->
+                    <!--android:inputType="textEmailAddress"-->
+                    <!--android:padding="12dp"-->
+                    <!--android:text="@{user.emailAddress}"-->
+                    <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"-->
+                    <!--android:textColorHint="@android:color/darker_gray" />-->
+
+                <!-- Province -->
+                <Spinner
+                    android:id="@+id/sp_province"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit_text_reg"
+                    android:fontFamily="sans-serif"
+                    android:padding="12dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <!-- City -->
+                <Spinner
+                    android:id="@+id/sp_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit_text_reg"
+                    android:fontFamily="sans-serif"
+                    android:padding="12dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/et_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit_text_reg"
+                    android:hint="Address"
+                    android:inputType="textPostalAddress"
+                    android:padding="12dp"
+                    android:text="@{user.address}"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/et_mobile_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit_text_reg"
+                    android:hint="Mobile Number"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:padding="12dp"
+                    android:text="@{user.cpNumber}"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <FrameLayout
+                    android:id="@+id/layout_birthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit_text_reg"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{() -> activity.onSelectBirthDay()}"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/et_birthday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:hint="Birthday"
+                        android:text="@{DateTimeUtils.getShortBirthDateOnly(user.birthday)}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColorHint="@android:color/darker_gray" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:tint="@color/colorPrimaryDark"
+                        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp"
+                        tools:ignore="ContentDescription" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:background="@drawable/bg_btn_gray"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{() -> activity.onSaveChanges()}"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="48dp"
+                    android:paddingRight="48dp"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    android:text="Save Changes"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</layout>
+

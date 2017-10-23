@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<data>
+
+    <import type="android.view.View" />
+    <import type="tip.edu.ph.runrio.util.DateTimeUtils" />
+
+    <variable
+        name="view"
+        type="tip.edu.ph.runrio.ui.main.list.EventListView" />
+
+    <variable
+        name="race"
+        type="tip.edu.ph.runrio.model.data.UpcomingRaces" />
+
+    <variable
+        name="contentVisible"
+        type="boolean" />
+
+</data>
+
+    <android.support.v7.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:onClick="@{() -> view.showUpcomingRacesDetails(race)}"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="5dp">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:foreground="#75000000"
+                    android:id="@+id/raceHomeListImage"
+                     />
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{race.racesName}"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text='@{DateTimeUtils.toReadable(race.raceDate)}'
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@{race.raceTypeText}"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/white" />/>
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:background="@drawable/button_box_accent"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:onClick="@{() -> view.showUpcomingRacesDetails(race)}"
+                    android:id="@+id/upcomingDetails"
+                    android:text="VIEW DETAILS" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:background="@drawable/button_box_accent"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:onClick="@{() -> view.showUpcomingRaces(race)}"
+                    android:id="@+id/upcomingRegister"
+                    android:text="REGISTER NOW" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>

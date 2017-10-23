@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">RunRio</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_transact">TransactionActivity</string>
+
+
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="register">Sign Up</string>
+    <string name="terms_conditions_link">&lt;a href="http://www.payapp.ph/terms.php">terms and conditions&lt;/a></string>
+    <string name="privacy_link">&lt;a href="http://www.payapp.ph/privacy.php">privacy policy&lt;/a></string>
+    <string name="title_activity_promo_list2">PromoListActivity2</string>
+    <string name="title_activity_promo_detail">PromoDetailActivity</string>
+    <string name="title_activity_event_location">Map</string>
+
+</resources>

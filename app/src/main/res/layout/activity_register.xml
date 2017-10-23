@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="view"
+            type="tip.edu.ph.runrio.ui.register.RegisterView" />
+    </data>
+
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".ui.register.RegisterActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="70dp"
+           >
+
+            <!-- email address -->
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="256dp"
+                android:background="@drawable/bg_edit_text_reg"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:maxLength="150"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+            <!-- first name -->
+            <EditText
+                android:id="@+id/et_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text_reg"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:hint="First Name"
+                android:inputType="textPersonName|textCapWords"
+                android:maxLength="100"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+            <!-- last name -->
+            <EditText
+                android:id="@+id/et_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text_reg"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                android:hint="Last Name"
+                android:inputType="textPersonName|textCapWords"
+                android:maxLength="100"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <!-- password -->
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text_reg"
+                android:fontFamily="sans-serif"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:maxLength="75"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <!-- confirm password -->
+            <EditText
+                android:id="@+id/et_repeat_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text_reg"
+                android:fontFamily="sans-serif"
+                android:hint="Re-enter Password"
+                android:inputType="textPassword"
+                android:maxLength="75"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+            <!-- Country -->
+            <Spinner
+                android:id="@+id/sp_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner"
+                android:fontFamily="sans-serif"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <!-- Province -->
+            <Spinner
+                android:id="@+id/sp_province"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner"
+                android:fontFamily="sans-serif"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <!-- City -->
+            <Spinner
+                android:id="@+id/sp_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner"
+                android:fontFamily="sans-serif"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <!-- address -->
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text_reg"
+                android:hint="Address"
+                android:inputType="textPostalAddress"
+                android:maxLength="255"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <Spinner
+                android:id="@+id/sp_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner"
+                android:fontFamily="sans-serif"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <Spinner
+                android:id="@+id/sp_shirtsizes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner"
+                android:fontFamily="sans-serif"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <FrameLayout
+                android:id="@+id/layout_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:onClick="@{() -> view.onSelectBirthday()}"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/et_birthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:hint="Birthday"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColorHint="@android:color/darker_gray" />
+
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:orientation="horizontal">
+                <!-- mobile number -->
+                <EditText
+                    android:id="@+id/et_mobile_number"
+                    android:layout_width="0dp"
+                    android:layout_weight=".4"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit_text_reg"
+                    android:hint="Prefix(i.e.0917,02)"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:padding="12dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/et_mobile_number2"
+                    android:layout_width="0dp"
+                    android:layout_weight=".6"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit_text_reg"
+                    android:hint="Number"
+                    android:inputType="number"
+                    android:maxLength="7"
+                    android:padding="12dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:textColorHint="@android:color/darker_gray" />
+
+            </LinearLayout>
+
+            <!-- Security Question 1 -->
+            <Spinner
+                android:id="@+id/sp_sq1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner"
+                android:fontFamily="sans-serif"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+            <!-- sq1 answer -->
+            <EditText
+                android:id="@+id/et_sq1_ans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text_reg"
+                android:hint="Security Question 1 Answer"
+                android:inputType="textEmailAddress"
+                android:maxLength="255"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <!-- Security Question 2 -->
+            <Spinner
+                android:id="@+id/sp_sq2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_spinner"
+                android:fontFamily="sans-serif"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <!-- sq2 answer -->
+            <EditText
+                android:id="@+id/et_sq2_ans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text_reg"
+                android:hint="Security Question 2 Answer"
+                android:inputType="textEmailAddress"
+                android:maxLength="255"
+                android:padding="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <!-- Checkbox policy -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_policy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_policy_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+
+            <!-- Register -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/btn_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> view.onRegister()}"
+                android:visibility="invisible"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="24dp"
+                app:contentPadding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginRight="48dp"
+                    android:text="REGISTER"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<data>
+
+    <import type="android.view.View" />
+
+    <variable
+        name="view"
+        type="tip.edu.ph.runrio.ui.upcoming_race.transaction.racetype.RaceTypeTransactionView" />
+
+    <variable
+        name="race"
+        type="tip.edu.ph.runrio.model.data.RaceType"/>
+
+    <variable
+        name="contentVisible"
+        type="boolean" />
+
+</data>
+
+<android.support.v7.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="120dp"
+    android:layout_height="100dp"
+    android:layout_margin="10dp"
+    android:onClick="@{() -> view.soloRace(race)}"
+    android:foreground="?selectableItemBackground"
+    app:cardElevation="1dp"
+    app:cardCornerRadius="2dp">
+
+    <TextView
+        android:id="@+id/runnerOneKilometer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@{race.raceTypeName}"
+        android:textSize="26sp" />
+</android.support.v7.widget.CardView>
+
+</layout>

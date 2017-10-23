@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<data>
+
+    <import type="android.view.View" />
+
+    <variable
+        name="view"
+        type="tip.edu.ph.runrio.ui.upcoming_race.transaction.racetype.RaceTypeTransactionView" />
+
+    <variable
+        name="race"
+        type="tip.edu.ph.runrio.model.data.RaceType"/>
+
+    <variable
+        name="contentVisible"
+        type="boolean" />
+
+</data>
+
+<android.support.v7.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:foreground="?selectableItemBackground"
+    app:cardElevation="1dp"
+    app:cardCornerRadius="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100">
+
+        <TextView
+            android:padding="12dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="65"
+            android:gravity="start"
+            android:text="@{race.raceTypeName}"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/transactionRaceTypeMultipleText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:text="0" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_weight="10"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:background="@color/greenSuccess"
+                android:gravity="center"
+                android:text="+"
+                android:id="@+id/transactionRaceTypeMultipleAdd"
+
+                android:textColor="@color/white" /><!-- android:onClick="@{() -> view.addCount(race)}"-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:background="@color/redFailed"
+                android:gravity="center"
+                android:text="-"
+                android:id="@+id/transactionRaceTypeMultipleMinus"
+
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+
+</layout>
