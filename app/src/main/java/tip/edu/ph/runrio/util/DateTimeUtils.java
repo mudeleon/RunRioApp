@@ -98,6 +98,18 @@ public static String endTime(Calendar cal) {
         return convertDateToString("yyyy-MM-dd", Calendar.getInstance());
     }
 
+    public static String getGender(String gender) {
+
+        String ret = "Male";
+        if (gender.equalsIgnoreCase("M"))
+            ret = "Male";
+        else
+            ret = "Female";
+
+
+        return ret;
+    }
+
     public static String convertTime(String time)
     {
         try {

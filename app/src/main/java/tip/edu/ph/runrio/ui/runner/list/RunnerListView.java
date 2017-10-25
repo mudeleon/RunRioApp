@@ -12,9 +12,25 @@ public interface RunnerListView extends MvpView {
     void stopRefresh();
 
     void showError(String message);
+
     void onRunnerClicked(Profile runner);
 
     void setRunnerList();
 
     void prepareList();
+
+    void onSaveAdd(Profile runner);
+
+    void onSuccess();
+
+    void onEditProfile(Profile runner);
+
+    void onDeleteProfile(Profile runner);
+
+    void onSelectBirthday();
+
+    void showProgress();
+
+    void dismissProgress();
+
 }

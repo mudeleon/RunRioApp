@@ -91,9 +91,7 @@ public class ProfileActivity extends MvpViewStateActivity<ProfileView, ProfilePr
             case R.id.action_edit_profile:
                 startActivity(new Intent(this, EditProfileActivity.class));
                 return true;
-            case R.id.action_message:
-                Toast.makeText(this, "Coming Soon..", Toast.LENGTH_SHORT).show();
-                return true;
+
 
             default:
                 return super.onOptionsItemSelected(item);

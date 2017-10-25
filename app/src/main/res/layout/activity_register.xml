@@ -169,6 +169,7 @@
                 android:background="@drawable/bg_spinner"
                 android:fontFamily="sans-serif"
                 android:padding="12dp"
+                android:visibility="gone"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
                 android:textColorHint="@android:color/darker_gray" />
 

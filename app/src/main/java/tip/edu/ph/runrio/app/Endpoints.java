@@ -53,6 +53,7 @@ public class Endpoints {
      //Profile
      public static final String RUNNER_LIST = "participant_profile";
      public static final String RUNNER_DETAIL = RUNNER_LIST + "/" + ID;
+     public static final String RUNNER_DELETE = RUNNER_LIST + "/change_status/" + ID;
 
 
      //transaction

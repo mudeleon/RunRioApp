@@ -48,6 +48,8 @@ public class RunnerListAdapter extends RecyclerView.Adapter<RunnerListAdapter.Vi
         holder.itemAdminBinding.setRunner(adminList.get(position));
         holder.itemAdminBinding.setView(view);
 
+        holder.itemAdminBinding.runnerListNumber.setText("Runner # "+(position+1));
+
     }
 
     @Override

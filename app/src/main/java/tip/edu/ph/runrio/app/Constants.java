@@ -12,6 +12,7 @@ public class Constants {
     public static final String IDadmin = "idadmin";
     public static final String ACCEPT = "Accept";
     public static final String UPCOMING_ID = "upcoming_id";
+    public static final String RACE_TYPE_SINGLE = "race_single";
 
     public static final String SUCCESS = "success";
     public static final String MESSAGE = "message";

@@ -111,7 +111,7 @@ public interface ApiInterface {
     Call<List<Reservation>>getUserReservations(@Header(Constants.AUTHORIZATION) String authorization ,@Header(Constants.ACCEPT) String json);
 
 
-    //Load Profile
+    //Profile
 
     @GET(Endpoints.RUNNER_DETAIL)
     Call<Profile>getProfileDetail(@Header(Constants.AUTHORIZATION) String authorization,
@@ -121,6 +121,20 @@ public interface ApiInterface {
     Call<List<Profile>>getProfiles(@Header(Constants.AUTHORIZATION) String authorization ,@Header(Constants.ACCEPT) String json);
 
 
+    @FormUrlEncoded
+    @POST(Endpoints.RUNNER_LIST)
+    Call<BasicResponse> registerRunner(@Header(Constants.AUTHORIZATION) String authorization,
+                                       @FieldMap Map<String, String> params, @Header(Constants.ACCEPT) String json);
+
+
+    @FormUrlEncoded
+    @PUT(Endpoints.RUNNER_DETAIL)
+    Call<BasicResponse> editRunner(@Path("id") String eventId,@Header(Constants.AUTHORIZATION) String authorization,
+                                       @FieldMap Map<String, String> params, @Header(Constants.ACCEPT) String json);
+
+    @PUT(Endpoints.RUNNER_DELETE)
+    Call<BasicResponse> deleteRunner(@Header(Constants.AUTHORIZATION) String authorization,
+                                  @Path("id") String eventId, @Header(Constants.ACCEPT) String json);
 
 
 }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="tip.edu.ph.runrio.util.DateTimeUtils" />
         <variable
             name="runner"
             type="tip.edu.ph.runrio.model.data.Profile" />
@@ -14,40 +14,54 @@
 
     </data>
 
+    <android.support.v7.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:onClick="@{() -> view.onRunnerClicked(runner)}"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="5dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
-        android:onClick="@{() -> view.onRunnerClicked(runner)}"
         android:orientation="horizontal"
         android:padding="@dimen/activity_horizontal_margin">
 
-        <ImageView
-            android:id="@+id/img_promo"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            tools:ignore="ContentDescription" />
+
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:orientation="vertical">
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Runner # 1"
+                android:id="@+id/runnerListNumber"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{runner.fullName}"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{runner.profileGender}"
+                android:text='@{"Gender: "+DateTimeUtils.getGender(runner.profileGender)}'
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
-
         </LinearLayout>
 
     </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </layout>

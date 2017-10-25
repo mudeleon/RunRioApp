@@ -95,6 +95,7 @@
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:gravity="center"
                 android:text="@{user.cpNumber}"
+                android:visibility="gone"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead" />
 
             <TextView
@@ -103,6 +104,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="Mobile Number"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 

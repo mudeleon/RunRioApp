@@ -1,6 +1,7 @@
 package tip.edu.ph.runrio.ui.upcoming_race.transaction.racetype;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -41,6 +42,7 @@ import tip.edu.ph.runrio.model.data.RaceType;
 import tip.edu.ph.runrio.model.data.UpcomingRaces;
 import tip.edu.ph.runrio.model.data.User;
 import tip.edu.ph.runrio.ui.upcoming_race.detail.UpcomingRaceDetailPresenter;
+import tip.edu.ph.runrio.ui.upcoming_race.transaction.profiletab.ProfileTabActivity;
 
 
 public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTransactionView, RaceTypeTransactionPresenter> implements RaceTypeTransactionView {
@@ -157,7 +159,13 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
 
 
 
-        Log.d(">>>",racetypeMultipleAdapter.getListValue().get(0)+"");
+
+        Intent intent = new Intent(this, ProfileTabActivity.class);
+        Bundle mBundle = new Bundle();
+        mBundle.putString(Constants.UPCOMING_ID, upcomingID);
+        mBundle.putString(Constants.RACE_TYPE_SINGLE, String.valueOf(race.getId()));
+        intent.putExtras(mBundle);
+        startActivity(intent);
     }
 
     @Override
@@ -203,33 +211,7 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
     public RaceTypeTransactionPresenter createPresenter() {
         return new RaceTypeTransactionPresenter();
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_refresh, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            case R.id.action_refresh:
-                onRefresh();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-
-    public void onRefresh() {
-            presenter.loadUpcomingRaces(user.getApiToken(),(upcomingID));
-        progressDialog.show();
-
-    }
 
     @Override
     public void stopRefresh() {
