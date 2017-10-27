@@ -2,11 +2,15 @@ package tip.edu.ph.runrio.ui.upcoming_race.transaction.profiletab.profilefragmen
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
 
+import tip.edu.ph.runrio.model.data.Profile;
 
 
 public interface ProfileView extends MvpView {
 
-    void onChangePasswordClicked();
+
+    void onDialogRunnerClicked(Profile runner);
+
+    void onAddRunner(Profile runner);
 
     void showProgress();
 

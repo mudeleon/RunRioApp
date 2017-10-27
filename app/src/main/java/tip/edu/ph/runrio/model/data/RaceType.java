@@ -18,7 +18,7 @@ public class RaceType extends RealmObject {
 
     @PrimaryKey
     @SerializedName("id")
-    private int id;
+    private String id;
      @SerializedName("event_id")
     private String raceTypeRaceId;
     @SerializedName("name")
@@ -88,11 +88,11 @@ public class RaceType extends RealmObject {
 
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -100,11 +100,19 @@ public static String endTime(Calendar cal) {
 
     public static String getGender(String gender) {
 
-        String ret = "Male";
-        if (gender.equalsIgnoreCase("M"))
-            ret = "Male";
-        else
-            ret = "Female";
+
+        String ret;
+       try {
+
+
+           if (gender.equalsIgnoreCase("M"))
+               ret = "Male";
+           else
+               ret = "Female";
+       }catch (Exception e)
+       {
+           ret = "error";
+       }
 
 
         return ret;

@@ -57,6 +57,7 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
     SupportMapFragment mapFragment;
     private RaceTypeMultipleAdapter racetypeMultipleAdapter;
     private RaceTypeSingleAdapter racetypeSingleAdapter;
+    private String ctr;
 
 
 
@@ -115,6 +116,7 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
         {
             Log.d(TAG, "load>> user");
             presenter.loadUpcomingRaces(user.getApiToken(),upcomingID);
+            presenter.loadRunner(user.getApiToken());
         }
 
     }
@@ -153,17 +155,13 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
 
     }
 
-
     @Override
     public void soloRace(RaceType race) {
-
-
-
 
         Intent intent = new Intent(this, ProfileTabActivity.class);
         Bundle mBundle = new Bundle();
         mBundle.putString(Constants.UPCOMING_ID, upcomingID);
-        mBundle.putString(Constants.RACE_TYPE_SINGLE, String.valueOf(race.getId()));
+        mBundle.putString(Constants.RACE_TYPE_SINGLE, race.getId());
         intent.putExtras(mBundle);
         startActivity(intent);
     }
@@ -172,12 +170,20 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
     public void clickNext() {
 
 
-        Log.d(">>>",racetypeMultipleAdapter.getListValue().get(0)+"");
+        ctr="";
+        for(int a=0;a<racetypeMultipleAdapter.getItemCount();a++)
+        {
+
+            ctr += (racetypeMultipleAdapter.getListValue().get(a)+"%");
+        }
+        Intent intent = new Intent(this, ProfileTabActivity.class);
+        Bundle mBundle = new Bundle();
+        mBundle.putString(Constants.UPCOMING_ID, upcomingID);
+        mBundle.putString(Constants.RACE_TYPE_MULTIPLE, ctr);
+        mBundle.putString(Constants.RACE_TYPE_SINGLE, "");
+        intent.putExtras(mBundle);
+        startActivity(intent);
     }
-
-
-
-
 
     @Override
     public void onResume() {
@@ -191,27 +197,23 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
         }else
         {
             presenter.loadUpcomingRaces(user.getApiToken(),(upcomingID));
+            presenter.loadRunner(user.getApiToken());
             progressDialog.show();
         }
     }
 
-
     @Override
     protected void onDestroy() {
-//        races.removeChangeListeners();
-
 
         realm.close();
         super.onDestroy();
     }
-
 
     @NonNull
     @Override
     public RaceTypeTransactionPresenter createPresenter() {
         return new RaceTypeTransactionPresenter();
     }
-
 
     @Override
     public void stopRefresh() {
@@ -222,8 +224,6 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
     public void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-
-
 
     @NonNull
     @Override

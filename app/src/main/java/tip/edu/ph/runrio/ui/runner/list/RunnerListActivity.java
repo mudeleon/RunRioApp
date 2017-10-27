@@ -188,7 +188,7 @@ public class RunnerListActivity extends MvpViewStateActivity<RunnerListView, Run
     {
         realm = Realm.getDefaultInstance();
         User user = realm.where(User.class).findFirst();
-        profileRealmResults = realm.where(Profile.class).findAll();
+        profileRealmResults = realm.where(Profile.class).contains("profileActive","Y").findAllSorted("id");
             if (!(profileRealmResults.isEmpty())) {
                 getMvpView().setRunnerList();
 
@@ -667,25 +667,17 @@ public class RunnerListActivity extends MvpViewStateActivity<RunnerListView, Run
     private void populateGenderAndSizes2() {
 
 
-
         gender = new ArrayList<>();
         gender.add("Male");
         gender.add("Female");
-
-
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(RunnerListActivity.this, R.layout.spinner_custom_item, gender);
         dialogBindingEdit.spGender.setAdapter(arrayAdapter);
-
-
         /**
          * Triggers on click of the spinner
          */
-
         dialogBindingEdit.spGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-
             if(dialogBindingEdit.spGender.getSelectedItem().toString().equalsIgnoreCase("Male"))
                 genderStr = "M";
             else

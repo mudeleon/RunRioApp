@@ -208,19 +208,26 @@
                     android:layout_marginTop="6dp"
                     android:name="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
                     android:layout_height="200dp"
                     />
 
 
-
-
-                <Button
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_rounded_slight_accent"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:text="Reserve Now"
                     android:onClick="@{() -> view.reserve(race)}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+
+
+
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
 

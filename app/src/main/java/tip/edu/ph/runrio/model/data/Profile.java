@@ -46,6 +46,8 @@ public class Profile extends RealmObject {
     @SerializedName("city")
     private City city;
 
+
+
     public City getCity() {
         return city;
     }
@@ -155,6 +157,17 @@ public class Profile extends RealmObject {
     }
 
 
+    public String getNullCheckerTransactionList() {
+        return nullCheckerTransactionList;
+    }
+
+    public void setNullCheckerTransactionList(String nullCheckerTransactionList) {
+        this.nullCheckerTransactionList = nullCheckerTransactionList;
+    }
+
+    private String nullCheckerTransactionList;
+
+
     public String getFullName() {
         return profileFirstName + " " + profileLastName;
     }
@@ -166,5 +179,8 @@ public class Profile extends RealmObject {
     public String getAddress() {
         return profileCity + ", " + profileProvince +" "+ profileCountry;
     }
+
+
+
 
 }
