@@ -40,12 +40,32 @@ public class User extends RealmObject {
     private String apiToken;
     @SerializedName("city")
     private City city;
+    @SerializedName("contact_prefix")
+    private String profileContactPrefix;
+    @SerializedName("contact_no")
+    private String profileContactNo;
 
     private String gcmToken;
     @SerializedName("user_image")
     private String image;
 
     public User() {
+    }
+
+    public String getProfileContactPrefix() {
+        return profileContactPrefix;
+    }
+
+    public void setProfileContactPrefix(String profileContactPrefix) {
+        this.profileContactPrefix = profileContactPrefix;
+    }
+
+    public String getProfileContactNo() {
+        return profileContactNo;
+    }
+
+    public void setProfileContactNo(String profileContactNo) {
+        this.profileContactNo = profileContactNo;
     }
 
     public City getCity() {
@@ -162,6 +182,10 @@ public class User extends RealmObject {
 
     public String getFullName() {
         return firstName + " " + lastName;
+    }
+
+    public String getFullContact() {
+        return profileContactPrefix + " " + profileContactNo;
     }
 
 }

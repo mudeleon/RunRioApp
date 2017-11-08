@@ -16,6 +16,15 @@ public class Constants {
     public static final String RACE_TYPE_MULTIPLE = "race_multiple";
     public static final String RACE_TYPE_ID = "race_typeID";
     public static final String RUNNER_COUNT = "runner_count";
+    public static final String RUNNER_TOTAL = "runner_total";
+    public static final String CONTROL_NUMBER = "control_number";
+
+
+    public static final String CLAIMING_NAME = "claiming_name";
+    public static final String CLAIMING_EMAIL = "claiming_email";
+    public static final String CLAIMING_TYPE = "claiming_type";
+    public static final String CLAIMING_CONTACT = "claiming_contact";
+
 
     public static final String SUCCESS = "success";
     public static final String MESSAGE = "message";

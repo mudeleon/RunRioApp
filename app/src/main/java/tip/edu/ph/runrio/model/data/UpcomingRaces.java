@@ -42,6 +42,10 @@ public class UpcomingRaces  extends RealmObject {
     private String raceTypeText;
     @SerializedName("overview_link")
     private String raceSchedule;
+    @SerializedName("terms_of_service")
+    private String raceTerms;
+    @SerializedName("waiver")
+    private String raceWaiver;
     @SerializedName("race_kit_all")
     private RealmList<RaceKit> racekitallCategory;
     @SerializedName("race_type")
@@ -197,6 +201,21 @@ public class UpcomingRaces  extends RealmObject {
     }
 
 
+    public String getRaceTerms() {
+        return raceTerms;
+    }
+
+    public void setRaceTerms(String raceTerms) {
+        this.raceTerms = raceTerms;
+    }
+
+    public String getRaceWaiver() {
+        return raceWaiver;
+    }
+
+    public void setRaceWaiver(String raceWaiver) {
+        this.raceWaiver = raceWaiver;
+    }
 
 
 

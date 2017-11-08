@@ -111,6 +111,12 @@ public interface ApiInterface {
     Call<List<Reservation>>getUserReservations(@Header(Constants.AUTHORIZATION) String authorization ,@Header(Constants.ACCEPT) String json);
 
 
+    @FormUrlEncoded
+    @POST(Endpoints.TRANSACTIONS)
+    Call<BasicResponse> reservation(@Header(Constants.AUTHORIZATION) String authorization,
+                                       @FieldMap Map<String, String> params, @Header(Constants.ACCEPT) String json);
+
+
     //Profile
 
     @GET(Endpoints.RUNNER_DETAIL)

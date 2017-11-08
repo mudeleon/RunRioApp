@@ -148,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Claiming"
+                    android:text="Claim Type"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
                 <LinearLayout
@@ -167,7 +167,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="PICK UP" />
+                            android:text="Delivery" />
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/recyclerView2"
@@ -185,7 +185,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="DELIVERY" />
+                            android:text="Pick Up" />
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/recyclerView3"

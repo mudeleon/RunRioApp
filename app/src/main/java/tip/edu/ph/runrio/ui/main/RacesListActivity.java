@@ -51,6 +51,7 @@ import tip.edu.ph.runrio.model.response.BasicResponse;
 import tip.edu.ph.runrio.ui.login.LoginActivity;
 import tip.edu.ph.runrio.ui.main.list.EventListActivity;
 import tip.edu.ph.runrio.ui.profile.ProfileActivity;
+import tip.edu.ph.runrio.ui.reservations.ReservationsActivity;
 import tip.edu.ph.runrio.ui.runner.list.RunnerListActivity;
 import tip.edu.ph.runrio.ui.upcoming_race.detail.UpcomingRaceDetailActivity;
 import tip.edu.ph.runrio.util.CircleTransform;
@@ -225,8 +226,21 @@ public class RacesListActivity
             startActivity(new Intent(this, RunnerListActivity.class));
 
         }
-        else if (id == R.id.nav_transactions) {
+        else if (id == R.id.nav_myraces) {
+            Intent intent = new Intent(this, EventListActivity.class);
+            intent.putExtra("listIntent", "M");
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_upcoming) {
 
+            Intent intent = new Intent(this, EventListActivity.class);
+            intent.putExtra("listIntent", "U");
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_result) {
+            Intent intent = new Intent(this, EventListActivity.class);
+            intent.putExtra("listIntent", "R");
+            startActivity(intent);
         }
         else if (id == R.id.nav_logout) {
             logOut(user);
@@ -453,7 +467,9 @@ public class RacesListActivity
 
     @Override
     public void showUserRacesDetails(Reservation eventReservation) {
-
+        Intent intent = new Intent(this, ReservationsActivity.class);
+        intent.putExtra(Constants.ID, eventReservation.getId());
+        startActivity(intent);
     }
 
 

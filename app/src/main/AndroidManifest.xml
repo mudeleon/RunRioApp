@@ -62,6 +62,30 @@
             android:windowSoftInputMode="adjustPan" />
 
         <activity
+            android:name=".ui.reservations.detail.ReservationDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ui.reservations.ReservationsActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ui.reservations.runners.RunnerListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+
+
+        <activity
+            android:name=".ui.upcoming_race.transaction.claiming.ClaimingActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ui.upcoming_race.transaction.expense.ExpenseActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
             android:name=".ui.upcoming_race.transaction.racetype.RaceTypeTransactionActivity"
             android:windowSoftInputMode="adjustPan" />
 

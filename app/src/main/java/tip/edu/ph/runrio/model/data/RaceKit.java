@@ -29,6 +29,7 @@ public class RaceKit extends RealmObject {
     private String raceKitRules;
     @SerializedName("image")
     private String raceKitImage;
+    @SerializedName("choices")
     private RealmList<RaceKitChoices> raceKitChoicesCategory;
 
 

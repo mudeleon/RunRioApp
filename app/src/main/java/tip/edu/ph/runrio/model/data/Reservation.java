@@ -15,13 +15,15 @@ public class Reservation extends RealmObject {
 
     @SerializedName("id")
     @PrimaryKey
-    private String id;
+    private int id;
     @SerializedName("reservation_status")
     private String reservationStatus;
     @SerializedName("payment_status")
     private String reservationPaymentStatus;
     @SerializedName("date_reserved")
     private String reservationDate;
+
+
 
 
 
@@ -85,11 +87,11 @@ public class Reservation extends RealmObject {
 
 
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

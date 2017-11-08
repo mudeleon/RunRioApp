@@ -37,6 +37,7 @@ import tip.edu.ph.runrio.ui.main.list.RaceResultListAdapter;
 import tip.edu.ph.runrio.ui.main.list.UpcomingRacesListAdapter;
 import tip.edu.ph.runrio.ui.main.list.UserRacesListAdapter;
 import tip.edu.ph.runrio.ui.upcoming_race.detail.UpcomingRaceDetailActivity;
+import tip.edu.ph.runrio.ui.upcoming_race.transaction.racetype.RaceTypeTransactionActivity;
 
 
 public class EventListActivity
@@ -304,6 +305,11 @@ public class EventListActivity
 
     @Override
     public void showUpcomingRaces(UpcomingRaces eventUpcomingRaces) {
+
+        Intent intent = new Intent(this, RaceTypeTransactionActivity.class);
+        intent.putExtra(Constants.UPCOMING_ID, eventUpcomingRaces.getId());
+        startActivity(intent);
+
 
     }
 

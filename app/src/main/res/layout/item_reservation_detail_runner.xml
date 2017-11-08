@@ -1,0 +1,70 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="tip.edu.ph.runrio.util.DateTimeUtils" />
+
+        <variable
+            name="runnerRes"
+            type="tip.edu.ph.runrio.model.data.RunnerReservation" />
+
+        <variable
+            name="view"
+            type="tip.edu.ph.runrio.ui.reservations.detail.ReservationDetailView" />
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text='@{"Runner # "+ runnerRes.bibNum}'
+                android:fontFamily="sans-serif-light"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="sans-serif-light"
+                android:id="@+id/runnerFullName"
+                android:text='Runner Full Name'
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/runnerGender"
+                android:text='Runner Age'
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|top"
+            android:background="@color/colorAccent"
+            android:padding="6dp"
+            android:visibility="gone"
+            android:verticalScrollbarPosition="right"
+            android:text='Race Type'
+            android:id="@+id/runnerRaceType"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+            android:textColor="@color/white" />
+    </FrameLayout>
+</layout>

@@ -17,7 +17,6 @@
             type="tip.edu.ph.runrio.ui.upcoming_race.transaction.racetype.RaceTypeTransactionView" />
     </data>
 
-
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,9 +29,17 @@
             android:padding="16dp">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="bottom"
+                android:text='@{race.racesName}'
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="STEP 1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -48,7 +55,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:paddingEnd="20dp"
                 android:paddingStart="20dp"
                 android:weightSum="100">
@@ -74,7 +81,6 @@
                     android:text="MANY" />
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -98,12 +104,11 @@
 
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:id="@+id/runnerMany"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".8"
+                    android:layout_weight=".9"
                     android:gravity="center|top"
                     android:orientation="vertical"
                     android:padding="16dp"
@@ -112,10 +117,10 @@
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recyclerView2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:background="#ededed"/>
 
                 </LinearLayout>
-
 
                 <TextView
                     android:layout_width="80dp"
@@ -130,17 +135,6 @@
                     android:visibility="invisible"
                     android:id="@+id/runnerManyNext"
                     android:textAppearance="@style/TextAppearance.AppCompat.Button" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight=".1"
-                    android:layout_gravity="bottom"
-                    android:layout_margin="5dp"
-                    android:gravity="bottom"
-                    android:text='@{race.racesName+"\n"+race.raceVenue}'
-                    android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-
 
             </LinearLayout>
 

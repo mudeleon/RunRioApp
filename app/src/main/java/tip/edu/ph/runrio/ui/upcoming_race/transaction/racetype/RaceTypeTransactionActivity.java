@@ -31,6 +31,7 @@ import com.hannesdorfmann.mosby.mvp.viewstate.MvpViewStateActivity;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 import tip.edu.ph.runrio.BuildConfig;
 import tip.edu.ph.runrio.R;
 import tip.edu.ph.runrio.app.Constants;
@@ -38,6 +39,7 @@ import tip.edu.ph.runrio.app.Endpoints;
 import tip.edu.ph.runrio.databinding.ActivityTransactionRaceTypeBinding;
 import tip.edu.ph.runrio.databinding.ActivityUpcomingRaceDetailBinding;
 import tip.edu.ph.runrio.databinding.DialogUpcomingdetailwebviewBinding;
+import tip.edu.ph.runrio.model.data.Profile;
 import tip.edu.ph.runrio.model.data.RaceType;
 import tip.edu.ph.runrio.model.data.UpcomingRaces;
 import tip.edu.ph.runrio.model.data.User;
@@ -55,6 +57,7 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
     private ProgressDialog progressDialog;
     private String upcomingID;
     SupportMapFragment mapFragment;
+    private RealmResults<Profile> profileRealmResults;
     private RaceTypeMultipleAdapter racetypeMultipleAdapter;
     private RaceTypeSingleAdapter racetypeSingleAdapter;
     private String ctr;
@@ -169,10 +172,17 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
     @Override
     public void clickNext() {
 
-
+        boolean nullchecker=false;
         ctr="";
+        int totalRunner=0;
         for(int a=0;a<racetypeMultipleAdapter.getItemCount();a++)
         {
+            if(!(racetypeMultipleAdapter.getListValue().get(a)==0))
+            {
+                nullchecker = true;
+            }
+
+            totalRunner += racetypeMultipleAdapter.getListValue().get(a);
 
             ctr += (racetypeMultipleAdapter.getListValue().get(a)+"%");
         }
@@ -180,9 +190,21 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
         Bundle mBundle = new Bundle();
         mBundle.putString(Constants.UPCOMING_ID, upcomingID);
         mBundle.putString(Constants.RACE_TYPE_MULTIPLE, ctr);
+        mBundle.putInt(Constants.RUNNER_TOTAL, totalRunner);
         mBundle.putString(Constants.RACE_TYPE_SINGLE, "");
         intent.putExtras(mBundle);
-        startActivity(intent);
+
+        profileRealmResults = realm.where(Profile.class).contains("profileActive","Y").findAllSorted("id");
+        if(totalRunner<=profileRealmResults.size()) {
+            if (nullchecker)
+                startActivity(intent);
+            else
+                showError("No Runner Selected!");
+        }else
+        {
+           // startActivity(intent);
+            showError("Total Participants is more than the registered runner!");
+        }
     }
 
     @Override
@@ -236,4 +258,25 @@ public class RaceTypeTransactionActivity extends MvpViewStateActivity<RaceTypeTr
     public void onNewViewStateInstance() {
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+
 }

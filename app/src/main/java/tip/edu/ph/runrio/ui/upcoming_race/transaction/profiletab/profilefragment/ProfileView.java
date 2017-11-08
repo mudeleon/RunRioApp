@@ -10,6 +10,8 @@ public interface ProfileView extends MvpView {
 
     void onDialogRunnerClicked(Profile runner);
 
+    void onSaveChoices();
+
     void onAddRunner(Profile runner);
 
     void showProgress();

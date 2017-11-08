@@ -28,8 +28,12 @@ public class ClaimingReservation extends RealmObject {
     private String claimingReservationZip;
     @SerializedName("address")
     private String claimingReservationAddress;
-    @SerializedName("type")
+    @SerializedName("claiming_type")
     private String claimingReservationType;
+
+
+    @SerializedName("status")
+    private String claimingReservationStatus;
     @SerializedName("city")
     private City city;
 
@@ -37,6 +41,13 @@ public class ClaimingReservation extends RealmObject {
     }
 
 
+    public String getClaimingReservationStatus() {
+        return claimingReservationStatus;
+    }
+
+    public void setClaimingReservationStatus(String claimingReservationStatus) {
+        this.claimingReservationStatus = claimingReservationStatus;
+    }
 
     public int getId() {
         return id;

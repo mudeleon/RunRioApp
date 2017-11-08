@@ -14,14 +14,36 @@ public class RunnerReservation extends RealmObject {
     @SerializedName("id")
     @PrimaryKey
     private String id;
+
+
     @SerializedName("race_type")
-    private RealmList<RaceType> racetypeCategory;
+    private RaceType racetypeCategory;
     @SerializedName("race_kit_reservations")
     private RealmList<RaceKitReservation> raceKitReservationCategory;
+
+
     @SerializedName("participant_profile")
-    private RealmList<Profile> profileCategory;
+    private Profile profileCategory;
 
 
+    public int getBibNum() {
+        return bibNum;
+    }
+
+    public void setBibNum(int bibNum) {
+        this.bibNum = bibNum;
+    }
+
+    @SerializedName("bib_number")
+    private int bibNum;
+
+    public RaceType getRacetypeCategory() {
+        return racetypeCategory;
+    }
+
+    public void setRacetypeCategory(RaceType racetypeCategory) {
+        this.racetypeCategory = racetypeCategory;
+    }
 
     public String getId() {
         return id;
@@ -31,13 +53,7 @@ public class RunnerReservation extends RealmObject {
         this.id = id;
     }
 
-    public RealmList<RaceType> getRacetypeCategory() {
-        return racetypeCategory;
-    }
 
-    public void setRacetypeCategory(RealmList<RaceType> racetypeCategory) {
-        this.racetypeCategory = racetypeCategory;
-    }
 
     public RealmList<RaceKitReservation> getRaceKitReservationCategory() {
         return raceKitReservationCategory;
@@ -47,11 +63,11 @@ public class RunnerReservation extends RealmObject {
         this.raceKitReservationCategory = raceKitReservationCategory;
     }
 
-    public RealmList<Profile> getProfileCategory() {
+    public Profile getProfileCategory() {
         return profileCategory;
     }
 
-    public void setProfileCategory(RealmList<Profile> profileCategory) {
+    public void setProfileCategory(Profile profileCategory) {
         this.profileCategory = profileCategory;
     }
 

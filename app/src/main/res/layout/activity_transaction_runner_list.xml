@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+    <data>
+
+
+
+
+        <variable
+            name="view"
+            type="tip.edu.ph.runrio.ui.upcoming_race.transaction.profiletab.profilefragment.ProfileView" />
+
+    </data>
+
     <android.support.design.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -22,6 +34,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/colorPrimary" />
 
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,10 +47,24 @@
         <android.support.v7.widget.RecyclerView
             android:layout_marginTop="20dp"
                 android:id="@+id/recycler_view"
+            android:background="#ededed"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
 </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:background="@drawable/button_rounded_slight_accent"
+            android:padding="10dp"
+            android:onClick="@{() -> view.onSaveChoices()}"
+            android:text="Next"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
     </android.support.design.widget.CoordinatorLayout>
 

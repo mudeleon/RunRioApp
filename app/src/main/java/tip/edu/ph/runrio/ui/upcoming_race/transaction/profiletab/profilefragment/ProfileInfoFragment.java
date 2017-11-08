@@ -3,6 +3,7 @@ package tip.edu.ph.runrio.ui.upcoming_race.transaction.profiletab.profilefragmen
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -34,8 +35,11 @@ import tip.edu.ph.runrio.app.Constants;
 import tip.edu.ph.runrio.databinding.ActivityTransactionRunnerListBinding;
 import tip.edu.ph.runrio.databinding.DialogListRunnerBinding;
 import tip.edu.ph.runrio.model.data.Profile;
+import tip.edu.ph.runrio.model.data.TransactionData;
+import tip.edu.ph.runrio.model.data.UpcomingRaces;
 import tip.edu.ph.runrio.model.data.User;
-
+import tip.edu.ph.runrio.ui.upcoming_race.transaction.claiming.ClaimingActivity;
+import tip.edu.ph.runrio.ui.upcoming_race.transaction.profiletab.ProfileTabActivity;
 
 
 public class ProfileInfoFragment extends MvpViewStateFragment<ProfileView, ProfilePresenter>
@@ -43,10 +47,15 @@ public class ProfileInfoFragment extends MvpViewStateFragment<ProfileView, Profi
 
 
     private ActivityTransactionRunnerListBinding binding;
-    private RealmResults<Profile> profileRealmResults;
+    private RealmResults<TransactionData> transactionRealmResults;
     private Realm realm;
+    private UpcomingRaces races;
+    private RealmResults<TransactionData> savedData;
+    private RealmResults<Profile> profileRealmResults;
     User user;
-    private List<Profile> profileList= new ArrayList<>();
+    private List<Profile> profileList = new ArrayList<>();
+    private List<String> raceKit = new ArrayList<>();
+    private List<String> raceChoices = new ArrayList<>();
     private ProfileListAdapter adapterRunnerList;
     private ProfileDialogListAdapter adapterRunnerDialog;
     private ProgressDialog progressDialog;
@@ -89,7 +98,7 @@ public class ProfileInfoFragment extends MvpViewStateFragment<ProfileView, Profi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_transaction_runner_list, container, false);
-
+        binding.setView(getMvpView());
 
         realm = Realm.getDefaultInstance();
         user = realm.where(User.class).findFirst();
@@ -107,7 +116,9 @@ public class ProfileInfoFragment extends MvpViewStateFragment<ProfileView, Profi
             sampler.setNullCheckerTransactionList(String.valueOf(a));
             profileList.add(sampler);
         }
-        adapterRunnerList.setRunnerList(profileList);
+        popolateKitChoices();
+        //popolateTransactionData(getArguments().getInt(Constants.RUNNER_COUNT, 0));
+        adapterRunnerList.setRunnerList(profileList,raceKit,raceChoices,getArguments().getInt(Constants.CONTROL_NUMBER,0));
         adapterRunnerList.notifyDataSetChanged();
 
 
@@ -136,6 +147,38 @@ public class ProfileInfoFragment extends MvpViewStateFragment<ProfileView, Profi
 
         realm.close();
         super.onStop();
+    }
+
+
+    @Override
+    public void onSaveChoices() {
+
+        Log.d(">>>",">>>");
+
+        savedData = realm.where(TransactionData.class).findAll();
+        for(int a=0; a<savedData.size();a++)
+        {
+            Log.d(">>>",  "ID>>"+savedData.get(a).getId()+ "   ProfileID>>"+savedData.get(a).getTransactionDataProfileId());
+
+            for(int b=0; b<savedData.get(a).getTransactionDataRaceKit().size();b++)
+            {
+                Log.d(">>>",  "IDRaceKit>>"+savedData.get(a).getTransactionDataRaceKit().get(b).getId()+"    RaceKit>>"+savedData.get(a).getTransactionDataRaceKit().get(b).getVal());
+
+            }
+            for(int b=0; b<savedData.get(a).getTransactionDataRaceKitChoices().size();b++)
+            {
+                Log.d(">>>",  "IDKitChoices>>"+savedData.get(a).getTransactionDataRaceKitChoices().get(b).getId()+"    Choices>>"+savedData.get(a).getTransactionDataRaceKitChoices().get(b).getVal());
+
+            }
+        }
+
+        Intent intent = new Intent(getActivity(), ClaimingActivity.class);
+        Bundle mBundle = new Bundle();
+        mBundle.putString(Constants.UPCOMING_ID, races.getId());
+        mBundle.putString(Constants.RACE_TYPE_MULTIPLE,getArguments().getString(Constants.RACE_TYPE_MULTIPLE) );
+        intent.putExtras(mBundle);
+        startActivity(intent);
+
     }
 
 
@@ -199,16 +242,32 @@ public class ProfileInfoFragment extends MvpViewStateFragment<ProfileView, Profi
             for(int a=0;a<getArguments().getInt(Constants.RUNNER_COUNT, 0);a++) {
                 Profile sampler = new Profile();
                 sampler.setNullCheckerTransactionList(String.valueOf(a));
-                if(profileList.get(a).getNullCheckerTransactionList()!=null) {
-                        if (a == Integer.parseInt(positiontoFill))
-                            profileList.set(a, runner);
-                }else if(profileList.get(a).getId() == positiontoFill2)
+                if (profileList.get(a).getNullCheckerTransactionList() != null) {
+                    if (a == Integer.parseInt(positiontoFill)) {
+                        profileList.set(a, runner);
+                        final TransactionData data = realm.where(TransactionData.class)
+                                .equalTo("id", a+(getArguments().getInt(Constants.CONTROL_NUMBER,0)))
+                                .findFirst();
+                        realm.beginTransaction();
+                        data.setTransactionDataProfileId(String.valueOf(runner.getId()));
+                        realm.commitTransaction();
+                    }
+
+                } else if (profileList.get(a).getId() == positiontoFill2) {
                     profileList.set(a, runner);
+                    final TransactionData data = realm.where(TransactionData.class)
+                            .equalTo("id", a+(getArguments().getInt(Constants.CONTROL_NUMBER,0)))
+                            .findFirst();
+                    realm.beginTransaction();
+                    data.setTransactionDataProfileId(String.valueOf(runner.getId()));
+                    realm.commitTransaction();
                 }
+            }
         }else
             showToast("Runner Already Assigned!");
         alert.dismiss();
-        adapterRunnerList.setRunnerList(profileList);
+        popolateKitChoices();
+        adapterRunnerList.setRunnerList(profileList,raceKit,raceChoices,getArguments().getInt(Constants.CONTROL_NUMBER,0));
         adapterRunnerList.notifyDataSetChanged();
 
     }
@@ -265,6 +324,38 @@ public class ProfileInfoFragment extends MvpViewStateFragment<ProfileView, Profi
 
         return duplicateChecker;
     }
+
+
+    public void popolateKitChoices()
+    {
+
+        String tempString="";
+        races = realm.where(UpcomingRaces.class).findFirst();
+        for(int a=0;a<races.getRacetypeCategory().size();a++) {
+            if((races.getRacetypeCategory().get(a).getId()).equalsIgnoreCase(getArguments().getString(Constants.RACE_TYPE_ID))) {
+              //  Log.d(">>RaceType >", races.getRacetypeCategory().get(a).getRaceTypeName());
+                for(int b=0;b<races.getRacetypeCategory().get(a).getRacekitCategory().size();b++) {
+                    if(races.getRacetypeCategory().get(a).getRacekitCategory().get(b).getRaceKitChoicesCategory().isEmpty()) {
+                  //      Log.d(">>No choices >", races.getRacetypeCategory().get(a).getRacekitCategory().get(b).getRaceKitName());
+                    }
+                    else
+                    {
+                        raceKit.add(races.getRacetypeCategory().get(a).getRacekitCategory().get(b).getRaceKitName());
+                    //    Log.d(">>with  choices >", races.getRacetypeCategory().get(a).getRacekitCategory().get(b).getRaceKitName());
+                        for(int c=0;c<races.getRacetypeCategory().get(a).getRacekitCategory().get(b).getRaceKitChoicesCategory().size();c++) {
+                    //        Log.d(">>choices >", races.getRacetypeCategory().get(a).getRacekitCategory().get(b).getRaceKitChoicesCategory().get(c).getRaceKitChoicesChoice());
+                          tempString += races.getRacetypeCategory().get(a).getRacekitCategory().get(b).getRaceKitChoicesCategory().get(c).getRaceKitChoicesChoice()+"%";
+                        }
+                        raceChoices.add(tempString);
+                        tempString="";
+                    }
+
+                }
+            }
+        }
+
+    }
+
 
 
 

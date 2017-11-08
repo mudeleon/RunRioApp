@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatDelegate;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.joanzapata.iconify.Iconify;
+import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -31,6 +33,10 @@ public class App extends Application {
                 .build();
         Realm.setDefaultConfiguration(realmConfig);
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+        Iconify
+                .with(new FontAwesomeModule());
+
+
     }
 
     public synchronized static App getInstance() {
